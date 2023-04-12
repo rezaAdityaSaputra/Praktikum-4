@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
+  <title>Document</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+  *
+  {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  body
+  {
+    overflow-x: hidden;
+    min-width: 100vh;
+    background: linear-gradient(#6942cd, #4649e1, rgb(33, 11, 197));
+  }
+  img
+  {
+    width: 100%;
+  }
+  ul
+  {
+    list-style: none;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+  .container
+  {
+    max-width: 80rem;
+    padding: 0 2rem; 
+  }
+  nav
+  {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+  }
+  nav .container
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+  }
+  .logo
+  {
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+  }
+  .links ul
+  {
+    display: flex;
+  }
+  .links a
+  {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    margin-right: 0.6rem;
+    color: #ffffff;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 1.5rem;
+    transition: 0.3s;
+  }
+  .links a.active,
+  .links a:hover
+  {
+    color: #060606;
+    background: #ffffff;
+  }
+  .hamburger-menu
+  {
+    width: 2.7rem;
+    height: 3rem;
+    z-index: 100;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .hamburger-menu .bar 
+  {
+    position: relative;
+    width: 2.1rem;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+  }
+  .bar::before,
+  .bar::after
+  {
+    content: '';
+    position: absolute;
+    width: 2.1rem;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+  }
+  .bar::before
+  {
+    transform: translateY(-9px);
+  }
+  .bar::after
+  {
+    transform: translateY(9px);
+  }
+  .hero
+  {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero img
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .inner{
+    overflow: hidden;
+}
+
+.inner img{
+  width: 100%;
+  height: 562;
+  transition: transform 1s ease;
+}
+
+.inner:hover img{
+  transform: scale(1.5);
+}
+  .hero #base
+  {
+    z-index: 6;
+  }
+  .hero #text
+  {
+    position: absolute;
+    color: #fefefe;
+    font-size: clamp(3rem, 7.5vw, 8rem);
+    white-space: nowrap;
+    letter-spacing: 3px;
+    z-index: 5;
+    right: -850px;
+  }
+  #text{
+    position: absolute;
+    right: -350px;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 7.5vw;
+    z-index: 9;
+}
+
+#btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+}
+.kedua{
+    position: relative;
+    padding: 100px;
+    
+}
+
+.kedua h2{
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.kedua p{
+    font-size: 1em;
+    color: #fff;
+}
+
+.ketiga{
+    position: relative;
+    padding: 100px;
+    
+}
+
+.ketiga h2{
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.ketiga p{
+    font-size: 1em;
+    color: #fff;
+}
+
+.ketiga label{
+    font-size: 1em;
+    color: #fff;
+}
+  .section-padding
+  {
+    padding: 80px 0;
+    background: #fefefe;
+  }
+  .grid
+  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  .left-content,
+  .right-content
+  {
+    padding: 2rem;
+  }
+  h4
+  {
+    font-weight: 700;
+    letter-spacing: 0.51px;
+    line-height: 1.35;
+    text-align: justify;
+    color: #0b0235;
+    font-size: 1.75rem;
+  }
+  h5{
+    color: #7c7a82;
+    font-size: 1rem;
+  }
+  .heading
+  {
+    font-size: 1.15rem;
+    color: #0b0235;
+    margin-bottom: 0.5rem;
+  }
+  p
+  {
+    color: #0b0235;
+    font-size: 0.9rem;
+    padding-bottom: 2rem;
+    padding-right: 1rem;
+  }
+  footer
+  {
+    background: #0b0235;
+    padding: 60px 0;
+    text-align: center;
+  }
+  footer img
+  {
+    max-width: 400px;
+  }
+  @media (max-width:992px)
+  {
+    .hamburger-menu
+    {
+      display: flex;
+    }
+    .links ul 
+    {
+      display: none;
+    }
+    
+  }
+  @media (max-width: 768px)
+  {
+    .grid
+    {
+      grid-template-columns: 1fr;
+    }
+    .left-content,
+    .right-content
+    {
+      padding: 0.4rem;
+    }
+}
+</style>
+
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="">
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#ketiga">Contact Me</a></li>
+        </ul>
+      </div>
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </nav>
+  <section class="hero">
+    <img src="images/1.png" class="translateX" data-speed="0.25" id="moon" alt="">
+    <img src="images/2.png" class="translateY" data-speed="0.35" id="clouds" alt="">
+    <img src="images/3.png" class="translateY" data-speed="0.15" id="mount" alt="">
+    <h1 id="text" class="translateX" data-speed="-9">Rekomendasi Film</h1>
+    <a href="#kedua" id="btn">Explore</a>
+    <img src="images/4.png" class="translateY" data-speed="0" id="base" alt="">
+  </section>
+
+  <div class="kedua" id="kedua">
+    <h2>Rekomendasi Film</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-5">
+      <div class="col">
+            <div class="card align-items-center" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/shazam-fury-of-the-gods-2023-web-dl-480p-720p-1080p/">
+                        <img src="images/shazam.jpg"  class="card-img-top" alt="..." >
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Shazam! (2023)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Shazam! Fury of the Gods is a superhero film sequel, where Shazam faces new threats with his superpowers and his friends. <br><br><br></p1>
+                  <a href="https://pahe.li/shazam-fury-of-the-gods-2023-web-dl-480p-720p-1080p/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/transformers-age-of-extinction-2014-uhd-bluray-1080p-2160p/">
+                        <img src="images/transformer.jpg"  class="card-img-top" alt="...">
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Transformers (2015)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Transformers: Age of Extinction is a sci-fi action film, where humans and transformers team up to save the world from a new enemy. <br><br><br></p1>
+                  <a href="https://pahe.li/transformers-age-of-extinction-2014-uhd-bluray-1080p-2160p//" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/bumblebee-uhd/">
+                        <img src="images/bumblebee.jpg" class="card-img-top" alt="...">
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Bumblebee (2018)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Bumblebee is a spin-off film from the Transformers franchise, featuring the beloved yellow Autobot on his own adventure. <br><br><br></p1>
+                  <a href="https://pahe.li/bumblebee-uhd/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div> 
+      
+      
+      <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/spider-man-homecoming-2017-uhd-bluray-720p-1080p/">
+                        <img src="images/Spiderman.jpg" class="card-img-top" alt="...">
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Spider-Man (2017)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Spider-Man: Homecoming follows Peter Parker as he tries to balance high school life and superhero duties also relationsip. <br><br><br></p1>
+                  <a href="https://pahe.li/spider-man-homecoming-2017-uhd-bluray-720p-1080p/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/dilan-1990-2018-nf-web-dl-480p-720p/">
+                        <img src="images/Dilan1990.jpg" class="card-img-top" alt="...">
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Dilan 1990 (2018)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Dilan 1990 portrays the romantic journey of Dilan and Milea in high school, set in the 1990s Indonesia.                    <br><br></p1>
+                  <a href="https://pahe.li/dilan-1990-2018-nf-web-dl-480p-720p/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/bruce-almighty-2003-bluray-480p-720p/">
+                        <img src="images/BruceAlmighty.jpg" class="card-img-top" alt="...">
+                    </a>
+                    
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Bruce Almighty (2003)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Bruce Almighty is a comedy film about a man who gains God's powers and learns life lessons. <br><br></p1>
+                  <a href="https://pahe.li/bruce-almighty-2003-bluray-480p-720p/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/toy-story-4-2019-uhd-bluray-720p-1080p/">
+                        <img src="images/ToyStory.jpg" class="card-img-top" alt="...">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Toy Story 4 (2019)</h5>
+                    <h5>Reza Aditya | 12 April 2023</h5>
+                    <p1 class="card-text">In Toy Story 4, Woody and friends embark on a quest to find a lost toy and discover a carnival adventure. <br><br></p1>
+                    <a href="https://pahe.li/toy-story-4-2019-uhd-bluray-720p-1080p/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div class="inner">
+                    <a href="https://pahe.li/kimi-no-na-wa/">                        
+                        <img src="images/KimiNoNawa.jpg" class="card-img-top" alt="'">
+                    </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Your Name. (2016)</h5>
+                  <h5>Reza Aditya | 12 April 2023</h5>
+                  <p1 class="card-text">Your Name is a anime film about a boy and a girl who mysteriously swap bodies and try to unravel their connection. <br><br></p1>
+                  <a href="https://pahe.li/kimi-no-na-wa/" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ketiga" id="ketiga">
+  <h2>Contact Me</h2>
+  <p>if you need help, please contact us via the form below</p>
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+          <label for="input" class="form-label">First Name</label>
+        <input type="text" class="form-control" placeholder="Enter Name" aria-label="First name">
+      </div>
+      <div class="col-md-6">
+          <label for="input" class="form-label">Last Name</label>
+        <input type="text" class="form-control" placeholder="Enter Name" aria-label="Last name">
+      </div>
+    </div>
+  <div class="mb-3">
+      <label for="pesan" class="form-label">Message</label>
+      <textarea class="form-control" id="pesan" rows="3"></textarea>
+  </div>
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        I agree to the terms and conditions <br><br>
+      </label>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</div>
+
+  <footer>
+    <div class="container">
+      <a href="#">
+        <img src="images/logo.png" alt="">
+      </a>
+    </div>
+  </footer>
+   <script>
+      const translateX = document.querySelectorAll(".translateX");
+const translateY = document.querySelectorAll(".translateY");
+window.addEventListener("scroll" ,() => {
+  let scroll = window.pageYOffset;
+  translateX.forEach(element => {
+    let speed = element.dataset.speed;
+    element.style.transform = `translateX(${scroll * speed}px)`;
+  })
+  translateY.forEach(element => {
+    let speed = element.dataset.speed;
+    element.style.transform = `translateY(${scroll * speed}px)`;
+  })
+})
+   </script>
+</body>
+</html>
